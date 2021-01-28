@@ -1,7 +1,7 @@
 const express = require('express');
 const app = express();
 const router = express.Router();
-const connection = require('E:\project\Full-Stack-Project\model\database.js');
+const connection = require('../../model/database.js');
 
 connection.connect((err)=>{
     if(err) throw err;
@@ -15,8 +15,8 @@ router.get('/login', (req,res)=>{
     
     router.post('/validation',(req,res)=>{
         var email=req.body.Email; 
-        var pwd=req.body.password;
-        connection.query('select * from student_details where email like ? and pwd like ?',[email,pwd],(err,results)=>{
+        var password=req.body.password;
+        connection.query('select * from student_details where email like ? and password like ?',[email,password],(err,results)=>{
             if (err) throw err;
             if(results){
                 connection.query('select student_details.reg.no,student_details.name ,student_marksheet.t1,student_marksheet.t2,student_marksheet.t3 from student_details join student_marksheet using(reg_no)',(err,results1)=>{

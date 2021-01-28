@@ -3,43 +3,51 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Userlist</title>
-    <link rel="stylesheet" href="./public/css/marksheet.css">
+    <title>Document</title>
 </head>
 <body>
-    <div class="table">
-        <table>
-            <caption>Student Marksheet</caption>
-
-            <tr>
-                <th>Name</th>
-                <th>Register Number</th>
-                <th> t1</th>
-                <th> t2</th>
-                <th> t3</th>
-                <th>Total</th>
-            </tr>
-
-            <% if(data.length != 0) { %>
-            <% data.forEach((row) => { %>
-
-            <tr>
-                    <td><%= row.username %></td>
-                    <td><%= row.reg_no %></td>
-                    <td><%= row.t1 %></td>
-                    <td><%= row.t2 %></td>
-                    <td><%= row.t3 %></td>
-                    <td><%= (row.t1 + row.t2 + row.t3 ) %></td>
-            </tr>
-            <% }); %>
-
-            <% } else {%>
+    <div class="table data" id="flex-container">
+        <div class "c1">
+            <h2>Mark sheet</h2>
+        </div>
+        <div class "c1">
+            <table border="1">
                 <tr>
-                    <td colspan="8"> No data Found</td>
+                    <th>S.no</th>
+                    <th>Name</th>
+                    <th>Roll No</th>
+                    <th>Date</th>
+                    <th>Test 1</th>
+                    <th>Test 2</th>
+                    <th>Test 3</th>
+                    <th>Average Score</th>
                 </tr>
-            <% } %>
-
-        </table>
+                <% if(userData.length!=0){%>
+                <%var i=1;%>
+            <%userData.forEach{function(data){%>
+            <tr>
+                <td><%=i;%></td>
+                <td><%=data.name %></td>
+                <td><%=data.reg_no%></td>
+                <% var datemonth=data.Date_of_exam.getMonth()+1%>
+                <td><%=data.email%></td>
+                <td><%=data.t1%></td>
+                <td><%=data.t2%></td>
+                <td><%=data.t3%></td>
+                <td><%=Math.round((data.t1+data.t2+data.t3)/3)%></td>
+            </tr>
+        <% i++;})%>
+        <%} else{%>
+        <tr>
+            <td colspan="9">No data found</td>
+        </tr>
+        
+        }
+        
+        
+        }}}
+            </table>
+        </div>
     </div>
 </body>
 </html>
