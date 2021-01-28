@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Userlist</title>
+    <link rel="stylesheet" href="./public/css/marksheet.css">
+</head>
+<body>
+    <div class="table">
+        <table>
+            <caption>Student Marksheet</caption>
+
+            <tr>
+                <th>Name</th>
+                <th>Register Number</th>
+                <th> t1</th>
+                <th> t2</th>
+                <th> t3</th>
+                <th>Total</th>
+            </tr>
+
+            <% if(data.length != 0) { %>
+            <% data.forEach((row) => { %>
+
+            <tr>
+                    <td><%= row.username %></td>
+                    <td><%= row.reg_no %></td>
+                    <td><%= row.t1 %></td>
+                    <td><%= row.t2 %></td>
+                    <td><%= row.t3 %></td>
+                    <td><%= (row.t1 + row.t2 + row.t3 ) %></td>
+            </tr>
+            <% }); %>
+
+            <% } else {%>
+                <tr>
+                    <td colspan="8"> No data Found</td>
+                </tr>
+            <% } %>
+
+        </table>
+    </div>
+</body>
+</html>

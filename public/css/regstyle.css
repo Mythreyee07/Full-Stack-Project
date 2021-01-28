@@ -5,7 +5,7 @@ body
     background-repeat: no-repeat;
     background-size: cover;
 }
-.container
+.overall
 {
     background-color:rgba(211, 211, 211, 0.5);
     display: flex;
@@ -31,7 +31,7 @@ img{
     margin-top: 20px;
     margin-left: 15px;
 }
-.button{
+.bun{
     background-image: linear-gradient(to right,purple ,red);
  border-radius: 8px;
     padding:7px;
