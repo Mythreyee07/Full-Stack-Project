@@ -1,51 +1,48 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+<html>
 </head>
 <body>
-    <div class="table data" id="flex-container">
+    <div class="table" >
         <div class "c1">
-            <h2>Mark sheet</h2>
+            <h2>MARK SHEET</h2>
         </div>
         <div class "c1">
-            <table border="1">
+            <table border="4">
                 <tr>
                     <th>S.no</th>
                     <th>Name</th>
                     <th>Roll No</th>
-                    <th>Date</th>
+                    <th>Date Of Exam</th>
                     <th>Test 1</th>
                     <th>Test 2</th>
                     <th>Test 3</th>
                     <th>Average Score</th>
                 </tr>
-                <% if(userData.length!=0){%>
+                <% if(Data.length!=0){%>
+                
+            <% Data.forEach ((data) => {%>
                 <%var i=1;%>
-            <%userData.forEach{function(data){%>
             <tr>
-                <td><%=i;%></td>
-                <td><%=data.name %></td>
-                <td><%=data.reg_no%></td>
-                <% var datemonth=data.Date_of_exam.getMonth()+1%>
-                <td><%=data.email%></td>
-                <td><%=data.t1%></td>
-                <td><%=data.t2%></td>
-                <td><%=data.t3%></td>
-                <td><%=Math.round((data.t1+data.t2+data.t3)/3)%></td>
+                <td><%= i; %></td>
+                <td><%= data.username %></td>
+                <td><%= data.reg_no %></td>
+                <% var datemonth=data.exam_date.getMonth()+1%>
+                <td><%= data.email %></td>
+                <td><%= data.t1 %></td>
+                <td><%= data.t2 %></td>
+                <td><%= data.t3 %></td>
+                <td><%= Math.round((data.t1+data.t2+data.t3)/3)%></td>
             </tr>
-        <% i++;})%>
-        <%} else{%>
+        <% i++;%>
+        <% }); %>
+        <% } else{ %>
         <tr>
-            <td colspan="9">No data found</td>
+            <td colspan="9">No data found!!! please check your details..</td>
         </tr>
         
-        }
+        <% } %>
         
         
-        }}}
+        
             </table>
         </div>
     </div>

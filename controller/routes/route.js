@@ -16,16 +16,22 @@ router.get('/login', (req,res)=>{
     router.post('/validation',(req,res)=>{
         var email=req.body.Email; 
         var password=req.body.password;
-        connection.query('select * from student_details where email like ? and password like ?',[email,password],(err,results)=>{
+        connection.query('select email from student_details where email like ?',[email],(err,results)=>{
             if (err) throw err;
             if(results){
-                connection.query('select student_details.reg.no,student_details.name ,student_marksheet.t1,student_marksheet.t2,student_marksheet.t3 from student_details join student_marksheet using(reg_no)',(err,results1)=>{
-                    res.render('userlist',{data:results1});
+                connection.query('select password from student_details where email like ? and password like ?)',[email,password],(err,results1)=>{
+                    connection.query('select student_marksheet.*,student_details.email from student_marksheet join student_details on student_marksheet.reg_no= student_details.reg_no where email like ? and password like ?',[email,password],(err,results)=>{
+                        console.log(results);
+                        res.render('userlist',{Data:results});
+    
+                    })
+                    
                 })
             }
         })
     
     })
+        
     router.get('/Signup',(req,res)=>{
     res.render('Signup');
     
