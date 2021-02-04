@@ -1,7 +1,19 @@
 const express = require('express');
 const app = express();
 const router = express.Router();
-const connection = require('../../model/database.js');
+//const connection = require('../../model/database.js');
+const {mongourl}=require('../../model/database')
+const {student_details}=require('../../model/student_details');
+const {student_marksheet}=require('../../model/student_marksheet');
+const {admin_details}=require('../../model/admin_details');
+
+mongoose.connect(mongourl,{useNewUrlParse:true});
+
+mongoose.connection.on('connected',()=>{
+    console.log("Mongoose is connected");
+})
+
+
 
 connection.connect((err)=>{
     if(err) throw err;
